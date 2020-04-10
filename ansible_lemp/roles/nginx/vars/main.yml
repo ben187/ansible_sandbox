@@ -1,2 +1,4 @@
 ---
-# vars file for roles/nginx
+packages_redhat:
+  - epel-release
+  - nginx
