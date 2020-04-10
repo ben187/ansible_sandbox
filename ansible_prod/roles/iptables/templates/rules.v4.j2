@@ -1,0 +1,15 @@
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:ACCEPTED_HOSTS - [0:0]
+:VPN_HOSTS - [0:0]
+-A INPUT -p tcp -m tcp --dport 5672 -j ACCEPTED_HOSTS
+-A INPUT -p tcp -m tcp --dport 15672 -j ACCEPTED_HOSTS
+-A INPUT -p tcp -m tcp --dport 25672 -j ACCEPTED_HOSTS
+-A ACCEPTED_HOSTS -s 127.0.0.0/24 -j ACCEPT
+-A ACCEPTED_HOSTS -s 172.16.151.0/24 -j ACCEPT
+-A ACCEPTED_HOSTS -p tcp -m tcp -j REJECT --reject-with tcp-reset
+-A ACCEPTED_HOSTS -j DROP
+COMMIT
+

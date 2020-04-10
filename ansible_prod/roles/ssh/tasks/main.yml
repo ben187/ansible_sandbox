@@ -1,0 +1,49 @@
+---
+- name: mkdir
+  file:
+    path: "/etc/ssh/ssh_keys"
+    state: directory
+
+- name: mkdir
+  file:
+    path: "/etc/ssh/ssh_keys/root/"
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
+    mode: 0700
+
+- name: copy root keys
+  copy:
+    src: "/root/.ssh/authorized_keys"
+    dest: "/etc/ssh/ssh_keys/root/authorized_keys"
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0600
+
+- name: mkdir
+  file:
+    path: "/etc/ssh/ssh_keys/itsumma/"
+    state: directory
+    recurse: yes
+    owner: itsumma
+    group: itsumma
+    mode: 0700
+
+- name: copy itsumma keys
+  copy:
+    src: "/home/itsumma/.ssh/authorized_keys"
+    dest: "/etc/ssh/ssh_keys/itsumma/authorized_keys"
+    remote_src: yes
+    owner: itsumma
+    group: itsumma
+    mode: 0600
+
+
+- name: add a line in file
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: AuthorizedKeysFile /etc/ssh/ssh_keys/%u/authorized_keys
+    insertafter: EOF
+  notify: restart sshd service

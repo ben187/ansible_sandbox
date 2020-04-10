@@ -1,0 +1,7 @@
+---
+# handlers file for postgresql
+- name: start postgresql
+  service:
+    name: postgresql
+    state: restarted
+    enabled: true

@@ -1,0 +1,13 @@
+---
+- name: add a line in file
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ item }}" 
+    insertafter: EOF
+  with_items:
+  - 172.16.151.1 smtp.hezzl.com
+  - 172.16.151.21 api-v2.hezzl.com api-sberkoleso.hezzl.com
+  - 172.16.151.23 api-rtk.hezzl.com
+  - 172.16.151.25 api-sbercity.hezzl.com
+  - 172.16.151.27 api-five-games.hezzl.com
+

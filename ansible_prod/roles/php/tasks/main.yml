@@ -1,0 +1,4 @@
+---
+# Install php packages, and extensions.
+- include_tasks: install.yml
+- include_tasks: configure.yml

@@ -1,0 +1,9 @@
+---
+# Configure openvpn
+- name: Copy client.conf file
+  template:
+    src: client.conf.j2
+    dest: "/etc/openvpn/client.conf"
+#  notify:
+#    - start openvpn
+#    - start openvpn@client

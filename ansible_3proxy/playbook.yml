@@ -1,0 +1,12 @@
+---
+- name: Test
+  hosts: all
+
+  tasks:
+  - name: check os
+    debug: var=ansible_os_family
+
+  - block: # FOR DEBIAN
+    - name: ping
+      ping:
+    when: ansible_os_family == "Debian"

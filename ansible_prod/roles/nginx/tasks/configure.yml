@@ -1,0 +1,6 @@
+---
+- name: Copy upstream.conf
+  copy:
+    src: "upstream.conf"
+    dest: "/etc/nginx/conf.d/"
+  notify: restart nginx

@@ -1,0 +1,14 @@
+---
+- name: Install htop
+  package:
+    name: htop
+    state: present
+- name: Install mc
+  package:
+    name: mc
+    state: present
+- name: Install telnet
+  package:
+    name: telnet
+    state: present
+

@@ -1,0 +1,28 @@
+---
+# Base settings
+php_version: "7.1"
+
+# List of base php packages
+php_base:
+  - http
+  - mailparse
+  - mongodb
+  - ssh2
+
+# List of PHP extensions to install from PPA
+php_extensions_ppa:
+  - bcmath
+  - cli
+  - curl
+  - fpm
+  - gd
+  - imap
+  - intl
+  - mbstring
+  - mcrypt
+  - mysql
+  - pgsql
+  - xml
+  - zip
+
+

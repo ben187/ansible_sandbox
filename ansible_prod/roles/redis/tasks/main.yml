@@ -1,0 +1,11 @@
+---
+- name: Install Redis
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items:
+  - redis-server
+  - redis-tools
+  notify: start redis 
+

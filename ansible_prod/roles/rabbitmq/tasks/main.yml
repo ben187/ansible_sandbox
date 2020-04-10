@@ -1,0 +1,33 @@
+---
+# tasks file for rabbitmq
+- name: install erlang-solution
+  apt:
+    deb: https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+
+- name: Install erlang-nox
+  apt:
+    name: erlang-nox
+    update_cache: yes
+    state: present
+
+- name: Add an Apt signing key
+  apt_key:
+    url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
+    state: present
+
+- apt_repository:
+    repo: deb https://dl.bintray.com/rabbitmq/debian xenial main
+    state: present
+    filename: rabbitmq
+    update_cache: yes
+
+- name: Install rabbitmq
+  apt:
+    name: "rabbitmq-server=3.7.3-1"
+    state: present
+  notify: start rabbitmq-server
+
+- name: Enables the rabbitmq_management plugin
+  rabbitmq_plugin:
+    names: rabbitmq_management
+    state: enabled

@@ -1,0 +1,61 @@
+---
+- name: Copy systemctl-units
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/systemd/system/"
+  with_items:
+  - php7.1-fpm-2.service
+  - php7.1-fpm-3.service
+  - php7.1-fpm-4.service
+  - php7.1-fpm-5.service
+
+- name: Copy php-fpm.conf
+  copy:
+    src: "php-fpm-2.conf"
+    dest: "/etc/php/7.1/fpm/php-fpm-2.conf"
+
+- name: Copy php-fpm.conf
+  copy:
+    src: "php-fpm-3.conf"
+    dest: "/etc/php/7.1/fpm/php-fpm-3.conf"
+                   
+- name: Copy php-fpm.conf
+  copy:
+    src: "php-fpm-4.conf"
+    dest: "/etc/php/7.1/fpm/php-fpm-4.conf"
+
+- name: Copy php-fpm.conf
+  copy:
+    src: "php-fpm-5.conf"
+    dest: "/etc/php/7.1/fpm/php-fpm-5.conf"
+
+- name: mkdir
+  file:
+    path: "/etc/php/7.1/fpm/{{ item }}"
+    state: directory
+  with_items:
+  - pool2.d
+  - pool3.d
+  - pool4.d
+  - pool5.d
+
+- name: Copy www.conf
+  copy:
+    src: pool2.d/www.conf
+    dest: "/etc/php/7.1/fpm/pool2.d/www.conf"
+- name: Copy www.conf
+  copy:
+    src: pool3.d/www.conf
+    dest: "/etc/php/7.1/fpm/pool3.d/www.conf"
+- name: Copy www.conf
+  copy:
+    src: pool4.d/www.conf
+    dest: "/etc/php/7.1/fpm/pool4.d/www.conf"
+- name: Copy www.conf
+  copy:
+    src: pool5.d/www.conf
+    dest: "/etc/php/7.1/fpm/pool5.d/www.conf"
+  notify: start services
+
+
+

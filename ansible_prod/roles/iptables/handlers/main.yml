@@ -1,0 +1,7 @@
+---
+# handlers file for iptables
+- name: start netfilter-persistent
+  service:
+    name: netfilter-persistent
+    state: restarted
+    enabled: true

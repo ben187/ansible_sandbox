@@ -1,0 +1,35 @@
+
+tls-client
+
+dev tun1
+proto udp
+remote 78.24.218.160 2000
+nobind
+
+topology subnet
+
+pull
+
+tls-auth keys/ta.key 1
+ca keys/ca.crt
+cert keys/api-five-games.crt
+key keys/api-five-games.key
+ns-cert-type server
+
+cipher DES-EDE3-CBC
+
+keepalive 10 120
+
+comp-lzo
+
+user nobody
+group nogroup
+
+persist-key
+persist-tun
+
+status /var/log/openvpn-status.log
+log-append /var/log/openvpn.log
+
+verb 3
+

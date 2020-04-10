@@ -1,0 +1,14 @@
+---
+- hosts: all
+  roles:
+#    - role: nginx
+#    - role: other_soft
+#    - role: php
+#    - role: redis
+#    - role: postgresql
+#    - role: openvpn
+#    - role: iptables
+#    - role: rabbitmq 
+#    - role: hosts 
+#    - role: user 
+#    - role: ssh 
