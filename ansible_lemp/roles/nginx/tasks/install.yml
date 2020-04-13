@@ -6,6 +6,11 @@
   - name: Install epel-release
     yum:
       name: "{{ item }}"
+    with_items: "{{ repository_redhat }}"
+  
+  - name: Install nginx
+    yum:
+      name: "{{ item }}"
     with_items: "{{ packages_redhat }}"
 
   - name: Start nginx
