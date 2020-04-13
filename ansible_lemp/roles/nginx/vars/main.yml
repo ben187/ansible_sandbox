@@ -2,3 +2,6 @@
 packages_redhat:
   - epel-release
   - nginx
+
+packages_debian:
+  - nginx

@@ -15,3 +15,17 @@
       enabled: yes 
 
   when: ansible_os_family == "RedHat"
+
+- block:
+  - name: Install nginx
+    apt:
+      name: "{{ item }}"
+    with_items: "{{ packages_debian }}"
+
+  - name: Start nginx
+    service:
+      name: nginx
+      state: started
+      enabled: yes
+
+  when: ansible_os_family == "Debian"
